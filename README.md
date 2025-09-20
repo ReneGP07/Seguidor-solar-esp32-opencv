@@ -61,7 +61,7 @@ Este proyecto usa **visión por computadora** para detectar el **punto más bril
 
 ---
 
-## ⚙️ Cómo funciona (pipeline)
+## ⚙️ Cómo funciona
 ```mermaid
 flowchart LR
     A["Webcam"] --> B["Escala de grises"]
@@ -77,6 +77,7 @@ flowchart LR
     G -->|abs(dx), abs(dy) dentro| L["SOL CENTRO"]
     H & I & J & K & L --> M["Serial 115200 a ESP32"]
     M --> N["A4988 + Stepper / Servo"]
+```
 ```bash
 pip install -r requirements.txt
 python host/app.py
