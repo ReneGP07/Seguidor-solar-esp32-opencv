@@ -125,7 +125,7 @@ python host/app.py
 ---
 
 ## 👥 Créditos y licencia
-- Autoría: **René Guzmán Pérez (FIME UANL) & Equipo 03**.  
+- Autor: René Guzmán Pérez (FIME UANL)
 - Documento de proyecto en `docs/`.  
 - Licencia: **MIT** (ver `LICENSE`).
 
