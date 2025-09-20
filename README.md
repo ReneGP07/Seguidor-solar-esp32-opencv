@@ -64,43 +64,19 @@ Este proyecto usa **visión por computadora** para detectar el **punto más bril
 ## ⚙️ Cómo funciona (pipeline)
 ```mermaid
 flowchart LR
-    A[Webcam] --> B[Escala de grises]
-    B --> C[Umbral binario (THRESH_VAL)]
-    C --> D[Contornos]
-    D --> E[Mayor área]
-    E --> F[Centroide (cx, cy)]
-    F --> G{Comparación con centro de imagen (TOLERANCIA)}
-    G -->|dx<0| H[MOTOR IZQUIERDA]
-    G -->|dx>0| I[MOTOR DERECHA]
-    G -->|dy<0| J[SERVO ARRIBA]
-    G -->|dy>0| K[SERVO ABAJO]
-    G -->|abs(dx),abs(dy) dentro| L[SOL CENTRO]
-    H & I & J & K & L --> M[Serial 115200 → ESP32]
-    M --> N[A4988 + Stepper / Servo]
-```
-
----
-
-## 🔧 Hardware y conexiones
-- ESP32
-- Driver **A4988** + motor a pasos (NEMA 17 sugerido)
-- **Servo** (SG90/MG90S, 5V)
-- **Webcam**
-- Fuente 12V (motor), 5V para servo (recomendado) y USB para ESP32 (GND común)
-
-| Señal | ESP32 | A4988 / Servo |
-|---|---:|---|
-| DIR | 26 | A4988 DIR |
-| STEP | 27 | A4988 STEP |
-| EN | 32 | A4988 EN *(LOW habilita)* |
-| SERVO PWM | 13 | Señal servo |
-| GND | GND | GND común (ESP32, A4988, servo) |
-
-> Ajusta **Vref** del A4988 a la corriente de tu motor para evitar sobrecalentamiento.
-
----
-
-## 🖥️ Instalación (PC) y ejecución
+    A["Webcam"] --> B["Escala de grises"]
+    B --> C["Umbral binario (THRESH_VAL)"]
+    C --> D["Contornos"]
+    D --> E["Mayor área"]
+    E --> F["Centroide (cx, cy)"]
+    F --> G{{"Comparación con centro de imagen (TOLERANCIA)"}}
+    G -->|dx<0| H["MOTOR IZQUIERDA"]
+    G -->|dx>0| I["MOTOR DERECHA"]
+    G -->|dy<0| J["SERVO ARRIBA"]
+    G -->|dy>0| K["SERVO ABAJO"]
+    G -->|abs(dx), abs(dy) dentro| L["SOL CENTRO"]
+    H & I & J & K & L --> M["Serial 115200 a ESP32"]
+    M --> N["A4988 + Stepper / Servo"]
 ```bash
 pip install -r requirements.txt
 python host/app.py
@@ -156,3 +132,4 @@ python host/app.py
 ---
 
 > Si este repo te sirvió, ¡dale ⭐ en GitHub! Y comparte un GIF de tu montaje en *Issues/Discussions* 😄
+
