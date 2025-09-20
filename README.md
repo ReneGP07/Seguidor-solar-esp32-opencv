@@ -78,10 +78,12 @@ flowchart LR
     H & I & J & K & L --> M["Serial 115200 a ESP32"]
     M --> N["A4988 + Stepper / Servo"]
 ```
+---
 ```bash
 pip install -r requirements.txt
 python host/app.py
 ```
+---
 1) Selecciona **puerto serie** (COMx / /dev/ttyUSBx).  
 2) Elige **índice de cámara** (0/1/2).  
 3) Pulsa **“Encender Cámara + Detección”**. La app enviará comandos según la posición del brillo respecto al centro.
